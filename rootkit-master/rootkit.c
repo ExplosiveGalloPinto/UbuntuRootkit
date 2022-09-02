@@ -541,6 +541,7 @@ int file_add(const char *name)
 
 void file_remove(const char *name)
 {
+    cout << "Borrando el archivo";
     struct file_entry *f, *tmp;
 
     list_for_each_entry_safe(f, tmp, &file_list, list) {
